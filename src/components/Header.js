@@ -1,9 +1,12 @@
 import React from "react";
 
-const Header = ({ answer }) => {
+const Header = ({ answer, correct }) => {
   const colorValue = `rgb(${answer})`;
   return (
-    <div className="header">
+    <div
+      className="header"
+      style={{ backgroundColor: correct ? colorValue : "" }}
+    >
       <p>THE GREAT</p>
       <span className="color">{colorValue}</span>
       <p>GUESSING GAME</p>

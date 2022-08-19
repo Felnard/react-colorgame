@@ -1,7 +1,6 @@
-import { useState } from "react";
 import React from "react";
 
-const Box = ({ style, boxClick, guess }) => {
+const Box = ({ style, boxClick }) => {
   const colorValue = `rgb(${style})`;
 
   return (

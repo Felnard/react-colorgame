@@ -8,13 +8,14 @@ function App() {
   const [colors, setColor] = useState([]);
   const [answer, setAnswer] = useState([]);
   const [guess, setGuess] = useState(false);
+  const [diff, setDiff] = useState(5);
 
   function randomColor() {
     setGuess(false);
     let hex = [];
     const allColors = [];
 
-    for (let i = 0; i <= 5; i++) {
+    for (let i = 0; i <= diff; i++) {
       for (let j = 0; j <= 2; j++) {
         hex.push(Math.floor(Math.random() * 255) + 1);
       }
@@ -26,11 +27,11 @@ function App() {
   }
   useEffect(() => {
     randomColor();
-  }, []);
+  }, [diff]);
   // CLICK BOX EVENT
   function boxClick(event) {
     if (
-      `rgb(${answer})` == event.target.style.backgroundColor.replace(/ /g, "")
+      `rgb(${answer})` === event.target.style.backgroundColor.replace(/ /g, "")
     ) {
       setGuess(true);
     } else {
@@ -42,18 +43,44 @@ function App() {
   console.log(answer);
   return (
     <div className="App">
-      <Header answer={answer} />
+      <Header answer={answer} correct={guess} />
       <div className="buttons">
         <form onSubmit={(e) => e.preventDefault()}>
-          <Button id={"play"} name={"PLAY AGAIN"} click={randomColor} />
-          <Button id={"corrrect"} name={"CORRECT"} />
-          <Button id={"easy"} name={"EASY"} />
-          <Button id={"hard"} name={"HARD"} />
+          <Button
+            id={"play"}
+            name={"PLAY AGAIN"}
+            click={randomColor}
+            correct={guess}
+            answer={answer}
+          />
+
+          <Button
+            id={"easy"}
+            name={"EASY"}
+            correct={guess}
+            answer={answer}
+            click={() => setDiff(5)}
+          />
+          <Button
+            id={"hard"}
+            name={"HARD"}
+            correct={guess}
+            answer={answer}
+            click={() => setDiff(11)}
+          />
         </form>
       </div>
+      {guess && <span className="color">You're Right</span>}
       <div className="choices">
-        {!guess ? (
+        {guess ? (
           <>
+            {colors.map((key) => (
+              <Box style={answer} key={key} guess={false} />
+            ))}
+          </>
+        ) : (
+          <>
+            {" "}
             {colors.map((color) => (
               <Box
                 style={color}
@@ -61,12 +88,6 @@ function App() {
                 answer={answer}
                 boxClick={boxClick}
               />
-            ))}
-          </>
-        ) : (
-          <>
-            {colors.map((key) => (
-              <Box style={answer} key={key} guess={false} />
             ))}
           </>
         )}

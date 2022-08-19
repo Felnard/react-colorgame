@@ -3,15 +3,15 @@
   box-sizing: border-box;
   padding: 0;
 }
-
+body {
+  background-color: black;
+}
 .App {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   font-family: "Courier New", Courier, monospace;
-  background-color: black;
-  height: 100%;
 }
 
 .header {
@@ -22,8 +22,9 @@
   color: white;
 }
 
-span {
+span.color {
   font-size: 3rem;
+  color: white;
   font-weight: bold;
 }
 
@@ -38,15 +39,16 @@ input#correct {
 .buttons input[type="button"] {
   border: none;
   background-color: transparent;
-  padding: 5px 10px;
   margin: 0 1rem;
   cursor: pointer;
+  padding: 0.5rem 1rem;
   transition: ease 0.3s;
+  font-weight: bold;
 }
 
 .buttons input[type="button"]:hover {
-  background-color: rgb(50, 173, 193);
-  background-color: #901143;
+  transform: scale(1.3);
+  text-decoration: underline;
 }
 div.choices {
   background-color: black;
