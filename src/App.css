@@ -1,38 +1,74 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  flex-direction: column;
+  font-family: "Courier New", Courier, monospace;
+  background-color: black;
+  height: 100%;
+}
+
+.header {
+  padding: 2rem;
+  background-color: rgb(88, 173, 186);
+  width: 100%;
+  text-align: center;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+span {
+  font-size: 3rem;
+  font-weight: bold;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.buttons {
+  background-color: white;
+  width: 100%;
+  text-align: center;
 }
+input#correct {
+  opacity: 0;
+}
+.buttons input[type="button"] {
+  border: none;
+  background-color: transparent;
+  padding: 5px 10px;
+  margin: 0 1rem;
+  cursor: pointer;
+  transition: ease 0.3s;
+}
+
+.buttons input[type="button"]:hover {
+  background-color: rgb(50, 173, 193);
+  background-color: #901143;
+}
+div.choices {
+  background-color: black;
+  width: 30%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 100px 0;
+  min-width: 450px;
+}
+
+div.choices .colors {
+  width: 150px;
+  height: 150px;
+  margin: 10px;
+  border-radius: 20px;
+  background-color: red;
+  color: white;
+}
+
+/* div.buttons input {
+  color: red;
+  background-color: red;
+} */
